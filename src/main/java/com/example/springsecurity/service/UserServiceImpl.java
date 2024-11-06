@@ -3,7 +3,10 @@ package com.example.springsecurity.service;
 import com.example.springsecurity.dto.CreateUserRequest;
 import com.example.springsecurity.model.User;
 import com.example.springsecurity.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +38,11 @@ public class UserServiceImpl implements UserServiceIF {
                 .build();
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findByUsername(username);
+        return user.orElseThrow(EntityNotFoundException::new);
     }
 }
