@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserDetailsImpl implements UserDetailsService {
 
-    private final UserServiceIF userService;
+    private final UserDetailsServiceIF userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

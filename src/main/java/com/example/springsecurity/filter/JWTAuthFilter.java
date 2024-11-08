@@ -1,6 +1,6 @@
 package com.example.springsecurity.filter;
 
-import com.example.springsecurity.service.UserServiceIF;
+import com.example.springsecurity.service.UserDetailsServiceIF;
 import com.example.springsecurity.service.jwt.JWTServiceIF;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -20,7 +20,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JWTAuthFilter extends OncePerRequestFilter {
 
-    private final UserServiceIF userDetailsService;
+    private final UserDetailsServiceIF userDetailsService;
     private final JWTServiceIF tokenService;
 
     @Override

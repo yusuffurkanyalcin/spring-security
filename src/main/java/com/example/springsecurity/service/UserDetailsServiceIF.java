@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Optional;
 
-public interface UserServiceIF extends UserDetailsService {
+public interface UserDetailsServiceIF extends UserDetailsService {
     Optional<User> getByUsername(String username);
     User createUser(CreateUserRequest createUserRequest);
 }
