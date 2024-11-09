@@ -34,7 +34,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        x -> x.requestMatchers("/auth/welcome/**", "/auth/createUser/**", "/auth/generateToken/**").permitAll()
+                        x -> x.requestMatchers(
+                                "/auth/welcome/**",
+                                        "/auth/createUser/**",
+                                        "/auth/generateToken/**",
+                                        "/auth/refreshToken/**").permitAll()
                                 .requestMatchers("/auth/user/**").hasRole("USER")
                                 .requestMatchers("/auth/admin/**").hasRole("ADMIN")
                 )
